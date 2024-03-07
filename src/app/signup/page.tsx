@@ -24,7 +24,7 @@ export default function SignupPage() {
       console.log("Signup success", response.data);
       router.push("/login");
     } catch (error: any) {
-      console.log("signup fail", error);
+      console.log("signup failed", error.message);
       toast.error(error.message);
     } finally {
       setLoading(false);
@@ -49,6 +49,7 @@ export default function SignupPage() {
       <hr />
       <label htmlFor="username">username</label>
       <input
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
         id="username"
         type="text"
         value={user.username}
@@ -57,24 +58,29 @@ export default function SignupPage() {
       />
       <label htmlFor="email">email</label>
       <input
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
         id="email"
-        type="email"
+        type="text"
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         placeholder="email"
       />
       <label htmlFor="password">password</label>
       <input
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
         id="password"
         type="password"
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="password"
       />
-      <button className="" onClick={onSignup}>
-        {buttonDisabled ? "No Signup" : "Signup"}
+      <button
+        onClick={onSignup}
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+      >
+        {buttonDisabled ? "No signup" : "Signup"}
       </button>
-      <Link href="/login">Visit Login</Link>
+      <Link href="/login">Visit login page</Link>
     </div>
   );
 }
